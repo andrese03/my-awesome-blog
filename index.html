@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Soon...</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <style type="text/css">
+    body {
+       padding: 50px;
+     }
+     @media (max-width: 980px) {
+       body {
+         padding: 0;
+       }
+     }
+  </style>
+</head>
+<body>
+  <h1>Andrés Encarnación <small>Software Developer</small></h1>
+  <p>
+    Soon<span id="dots">...</span>
+  </p>
+  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+    var numberOfDots = 1;
+    var setNumberOfDots = function (numberOfDots) {
+      var str = '';
+      for (var i = 0; i < numberOfDots; i++) {
+        str += '.';
+      }
+      return str;
+    }
+    setInterval(function () {
+      document.querySelector('#dots').innerHTML = setNumberOfDots(numberOfDots++);
+      if (numberOfDots == 4)
+        numberOfDots = 1;
+    }, 700);
+  </script>
+</body>
+</html>
