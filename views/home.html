@@ -1,0 +1,56 @@
+<div class="col-md-12">
+  <h1 class="page-header">
+      My Awesome Blog
+      <small>Just another blog</small>
+  </h1>
+</div>
+
+<!-- Blog Entries Column -->
+<div class="col-md-8">
+    
+    <post-card data="post" ng-repeat="post in posts"></post-card>
+
+    <div class="clearfix"></div>
+
+    <!-- Pager -->
+    <ul class="pager" ng-if="!theresASearch">
+        <li class="previous" ng-if="currentPage !== 1">
+            <a href="" ng-click="movePage(-1)">&larr; Previo</a>
+        </li>
+        <li class="next" ng-if="remain">
+            <a href="" ng-click="movePage(1)">Siguiente &rarr;</a>
+        </li>
+    </ul>
+
+</div>
+
+<!-- Blog Sidebar Widgets Column -->
+<div class="col-md-4">
+    
+    <!-- Blog Search Well -->
+    <form name="searchForm" ng-submit="searchPosts()" novalidate>
+    <div class="well">
+        <h4>Búsqueda</h4>
+        <div class="input-group">
+            <input type="text" name="search" ng-model="search" class="form-control">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="submit">
+                  <span class="fa fa-search"></span>
+                </button>
+                <button class="btn btn-default" type="button" ng-click="clearSearch()" ng-if="theresASearch">
+                  <span class="fa fa-times"></span>
+                </button>
+            </span>
+        </div>
+        <!-- /.input-group -->
+    </div>
+    </form>
+
+    <!-- Side Widget Well -->
+    <div class="well">
+        <h4>Andrés Encarnación</h4>
+        <p>
+          I’m an <strike> <i>Unicorn Lover</i> ♥ </strike> software developer. I’ve been working as a <b>Web Developer</b> for three years and leading software development teams since almost one year, I have good skills developing under <b>.NET</b> , <b>PHP</b> and <b>Dart</b> languages, using both relational database (<b>SQL Server</b>, <b>MySQL</b>, <b>Oracle SQL</b>) and nosql databases (<b>MongoDB</b>, <b>CouchDB</b>). My strongest developing skills are focused on most of the popular tools and frameworks built with <b><i>JavaScript</i></b> (<b>AngularJS</b>, <b>ExpressJS</b>, <b>NodeJS</b>, <b>jQuery</b>, <b>React Native</b>, and some of <b>Ionic</b>). For more information, send me a <a href="mailto:andresencarnacion03@gmail.com?Subject=About%20My%20Awesome%20Blog" target="_blank">mail</a>.
+        </p>
+    </div>
+</div>

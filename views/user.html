@@ -1,0 +1,24 @@
+<!-- Blog Post Content Column -->
+<div class="col-lg-8 col-lg-offset-2">
+
+  <!-- Author -->
+  <h1>
+    {{::user.name | capitalize}}
+  </h1>
+
+  <hr>
+
+  <post-card ng-repeat="post in posts" data="post"></post-card>
+  
+  <div class="clearfix"></div>
+
+  <!-- Pager -->
+  <ul class="pager" ng-if="remain">
+      <li class="next" ng-if="remain">
+          <a href="" ng-click="morePosts()">Más &rarr;</a>
+      </li>
+  </ul>
+
+  <!-- Amount of post -->
+
+</div>

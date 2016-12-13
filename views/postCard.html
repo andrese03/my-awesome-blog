@@ -1,0 +1,16 @@
+<div>
+  
+  <h3>
+    <a ui-sref="^.post({id: post.id})">{{post.title | capitalize}}</a> <small>by <button class="btn btn-link" ui-sref="^.user(post.user)">{{post.user.name}}</button></small>
+  </h3>
+  
+  <p><span class="glyphicon glyphicon-time"></span> Publicado el {{post.createdDate | date | lowercase }}, {{post.createdDate | date: 'shortTime'}}</p>
+  
+  <hr>
+  
+  <p>{{post.body}}</p>
+  
+  <a class="btn btn-link pull-right" ui-sref="^.post({id: post.id})">Ver más <span class="glyphicon glyphicon-chevron-right"></span></a>
+  
+
+</div>

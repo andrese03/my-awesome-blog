@@ -1,0 +1,60 @@
+<!-- Back Button -->
+<a id="post-button-back" class="btn btn-primary float-left" href="javascript:history.back()"><i class="fa fa-angle-left"></i></a>
+
+<!-- Blog Post Content Column -->
+<div class="col-lg-8 col-lg-offset-2">
+
+  <!-- Blog Post -->
+  <!-- Title -->
+  <h1>
+    {{::post.title | capitalize}}
+    <!-- Author -->
+    <small>by <a href="#">{{::post.user.name}}</a></small>
+  </h1>
+
+
+  <hr>
+
+  <!-- Date/Time -->
+  <p><span class="fa fa-clock-o"></span> Publicado el {{::post.createdDate | date | lowercase }}, {{::post.createdDate | date: 'shortTime'}} </p>
+
+
+  <hr>
+
+  <!-- Post Content -->
+  <p ng-bind-html="::post.body"></p>.
+
+  <hr>
+
+  <!-- Blog Comments -->
+
+  <!-- Comments Form -->
+  <div class="well">
+      <h4>Deja un comentario:</h4>
+      <form role="form">
+          <div class="form-group">
+              <textarea class="form-control" rows="3" disabled></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" ng-click="displayBlogLimits()">Enviar</button>
+      </form>
+  </div>
+
+  <hr>
+
+  <!-- Posted Comments -->
+
+  <!-- Comment -->
+  <div class="media" ng-repeat="comment in post.comments">
+      <a class="pull-left" href="#">
+          <img class="media-object" src="http://placehold.it/64x64" alt="">
+      </a>
+      <div class="media-body">
+          <h4 class="media-heading">{{::comment.name | capitalize}}
+              <small>{{::comment.createdDate | date | lowercase }}, {{::comment.createdDate | date: 'shortTime'}}</small>
+          </h4>
+          <!-- Comment Body -->
+          {{::comment.body | capitalize}}.
+      </div>
+  </div>
+
+</div>

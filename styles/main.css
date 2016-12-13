@@ -1,0 +1,31 @@
+/**
+ * Custom Styles
+ * Andrés Encarnación 06/12/2016
+ */
+
+body {
+    padding-top: 70px;
+}
+
+footer {
+    margin: 50px 0;
+}
+
+#navbar-logo {
+  height: 30px;
+  width: 30px;
+  margin: 10px;
+}
+
+/*Botón de Regresar*/
+#post-button-back {
+  position: absolute;
+  display:block;
+  width:50px;
+  height:50px;
+  line-height:35px;
+  border-radius: 50%;
+  text-align:center;
+  text-decoration:none;
+  font-size:20px;
+}
