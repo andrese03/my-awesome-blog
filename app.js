@@ -29,12 +29,12 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     controller:'HomeController',
     templateUrl:'views/home.html',
     resolve: {
-      posts: function($stateParams, JSONPlaceholder) {
+      posts: function($stateParams, JSONPlaceholderAPI) {
         var page = Number($stateParams.page);
         var query = $stateParams.q;
         return (!query)
-        ? JSONPlaceholder.getPosts(page)
-        : JSONPlaceholder.getPostsByCriteria(query);
+        ? JSONPlaceholderAPI.getPosts(page)
+        : JSONPlaceholderAPI.getPostsByCriteria(query);
       }
   }})
   .state('blog.user',{
@@ -42,11 +42,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     controller:'UserController',
     templateUrl:'views/user.html',
     resolve: {
-      user: function ($stateParams, JSONPlaceholder) {
-        return JSONPlaceholder.getUser($stateParams.id);
+      user: function ($stateParams, JSONPlaceholderAPI) {
+        return JSONPlaceholderAPI.getUser($stateParams.id);
       },
-      posts: function($stateParams, JSONPlaceholder) {
-        return JSONPlaceholder.getPostsByUser($stateParams.id, 1, 5);
+      posts: function($stateParams, JSONPlaceholderAPI) {
+        return JSONPlaceholderAPI.getPostsByUser($stateParams.id, 1, 5);
       }
   }})
   .state('blog.post',{
@@ -54,8 +54,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     controller:'PostController',
     templateUrl:'views/post.html',
     resolve: {
-      post: function($stateParams, JSONPlaceholder) {
-        return JSONPlaceholder.getPost($stateParams.id);
+      post: function($stateParams, JSONPlaceholderAPI) {
+        return JSONPlaceholderAPI.getPost($stateParams.id);
       }
   }});
 

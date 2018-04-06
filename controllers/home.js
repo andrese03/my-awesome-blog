@@ -5,7 +5,7 @@
  * Andrés Encarnación 06/12/2016
  */
 
-app.controller('HomeController', function ($scope, $state, $stateParams, JSONPlaceholder, posts) {
+app.controller('HomeController', function ($scope, $state, $stateParams, JSONPlaceholderAPI, posts) {
 
   $scope.currentPage = Number($stateParams.page) || 1;
 
@@ -25,7 +25,7 @@ app.controller('HomeController', function ($scope, $state, $stateParams, JSONPla
 
   // Búsca los posts
   $scope.searchPosts = function () {
-    JSONPlaceholder.getPostsByCriteria($scope.search)
+    JSONPlaceholderAPI.getPostsByCriteria($scope.search)
     .then(function (result) {
       $scope.posts = angular.copy(result.data);
       $scope.theresASearch = true;
@@ -44,7 +44,7 @@ app.controller('HomeController', function ($scope, $state, $stateParams, JSONPla
   // Mueve de página el historial
   $scope.movePage = function (page) {
     $scope.currentPage += page;
-    JSONPlaceholder.getPosts($scope.currentPage)
+    JSONPlaceholderAPI.getPosts($scope.currentPage)
     .then(function (result) {
       $scope.posts = angular.copy(result.data);
       $scope.remain = result.remain;

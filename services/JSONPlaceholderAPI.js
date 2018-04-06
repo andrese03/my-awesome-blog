@@ -1,17 +1,17 @@
 'use strict';
 
 /**
- * Wrap de Servicios de JSONPlaceholder
+ * Wrap de Servicios de JSONPlaceholderAPI
  * Andrés Encarnación 06/12/2016
  */
 
-app.factory('JSONPlaceholder', function($http, $q, $filter, Utils) {
+app.factory('JSONPlaceholderAPI', function($http, $q, $filter, Utils) {
 
   var APIEndpoint = 'https://jsonplaceholder.typicode.com/';
-  var JSONPlaceholder = {};
+  var JSONPlaceholderAPI = {};
   
   // Servicio de Prueba
-  JSONPlaceholder.test = function () {
+  JSONPlaceholderAPI.test = function () {
     var deferred = $q.defer();
 
     var result = {
@@ -26,7 +26,7 @@ app.factory('JSONPlaceholder', function($http, $q, $filter, Utils) {
   };
 
   // Obtener publicaciones
-  JSONPlaceholder.getPosts = function (page, limit, params) {
+  JSONPlaceholderAPI.getPosts = function (page, limit, params) {
     var deferred = $q.defer();
     var url = APIEndpoint + 'posts/';
     var data = null;
@@ -66,7 +66,7 @@ app.factory('JSONPlaceholder', function($http, $q, $filter, Utils) {
         return post;
       });
 
-      return JSONPlaceholder.getUsers();
+      return JSONPlaceholderAPI.getUsers();
     })
     .then(function (result) {
 
@@ -83,7 +83,7 @@ app.factory('JSONPlaceholder', function($http, $q, $filter, Utils) {
     return deferred.promise;
   };
 
-  JSONPlaceholder.getPostsByUser = function (userId, page, limit) {
+  JSONPlaceholderAPI.getPostsByUser = function (userId, page, limit) {
     var deferred = $q.defer();
     var url = APIEndpoint + 'posts/';
     var _this = this;
@@ -101,7 +101,7 @@ app.factory('JSONPlaceholder', function($http, $q, $filter, Utils) {
     return deferred.promise;
   };
 
-  JSONPlaceholder.getPostsByCriteria = function (criteria) {
+  JSONPlaceholderAPI.getPostsByCriteria = function (criteria) {
     var deferred = $q.defer();
     var url = APIEndpoint + 'posts/';
     var _this = this;
@@ -120,7 +120,7 @@ app.factory('JSONPlaceholder', function($http, $q, $filter, Utils) {
   };
 
   // Obtener una publicación
-  JSONPlaceholder.getPost = function (postId) {
+  JSONPlaceholderAPI.getPost = function (postId) {
     var deferred = $q.defer();
     var post = null;
     
@@ -136,11 +136,11 @@ app.factory('JSONPlaceholder', function($http, $q, $filter, Utils) {
     .then(function (result) {
       post = result.data;
       post.createdDate = moment().subtract(post.id, 'd').hour(_.random(8,16)).minute(_.random(1,60)).toDate();
-      return JSONPlaceholder.getCommentsByPost(postId);
+      return JSONPlaceholderAPI.getCommentsByPost(postId);
     })
     .then(function (result) {
       post.comments = result.data;
-      return JSONPlaceholder.getUser(post.userId);
+      return JSONPlaceholderAPI.getUser(post.userId);
     })
     .then(function (result) {
       post.user = result.data;
@@ -154,7 +154,7 @@ app.factory('JSONPlaceholder', function($http, $q, $filter, Utils) {
   };
 
   // Trae todos los comentarios de un post
-  JSONPlaceholder.getCommentsByPost = function (postId) {
+  JSONPlaceholderAPI.getCommentsByPost = function (postId) {
     var deferred = $q.defer();
     var url = APIEndpoint + 'posts/' + postId + '/comments';
     
@@ -179,7 +179,7 @@ app.factory('JSONPlaceholder', function($http, $q, $filter, Utils) {
   };
 
   // Obtener usuarios
-  JSONPlaceholder.getUsers = function (page, limit) {
+  JSONPlaceholderAPI.getUsers = function (page, limit) {
     var deferred = $q.defer();
     var url = APIEndpoint + 'users/';
     
@@ -213,7 +213,7 @@ app.factory('JSONPlaceholder', function($http, $q, $filter, Utils) {
   };
 
   // Obtener un usuario
-  JSONPlaceholder.getUser = function (userId) {
+  JSONPlaceholderAPI.getUser = function (userId) {
     var deferred = $q.defer();
     var user = null;
     
@@ -237,5 +237,5 @@ app.factory('JSONPlaceholder', function($http, $q, $filter, Utils) {
     return deferred.promise;
   };
 
-  return JSONPlaceholder;
+  return JSONPlaceholderAPI;
 });
