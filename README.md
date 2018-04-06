@@ -3,7 +3,7 @@ This is a simple demo blog built with AngularJS and JSONPlaceholder as the sourc
 
 ## Installation
 
-Before install the local dependencies, make sure you have installed bower. If not, please run the following command:
+Before install the local dependencies, make sure you have installed NodeJS and bower. If not, please go to [this link](https://nodejs.org/en/) to install NodeJS and then, run the following command:
 
 ```sh
 $ npm install -g bower
