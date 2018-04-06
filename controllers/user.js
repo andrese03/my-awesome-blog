@@ -5,7 +5,7 @@
  * Andrés Encarnación 06/12/2016
  */
 
-app.controller('UserController', function ($scope, $state, $stateParams, JSONPlaceholder, posts, user) {
+app.controller('UserController', function ($scope, $state, $stateParams, JSONPlaceholderAPI, posts, user) {
 
   $scope.user = user.data;
 
@@ -20,7 +20,7 @@ app.controller('UserController', function ($scope, $state, $stateParams, JSONPla
   // Mueve de página el historial
   $scope.morePosts = function () {
     $scope.currentPage++;
-    JSONPlaceholder.getPostsByUser($stateParams.id, $scope.currentPage, 5)
+    JSONPlaceholderAPI.getPostsByUser($stateParams.id, $scope.currentPage, 5)
     .then(function (result) {
       $scope.posts = $scope.posts.concat(angular.copy(result.data));
       $scope.remain = result.remain;
